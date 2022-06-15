@@ -1,0 +1,145 @@
+<div class="nt_se_{{section.id}} {{section.settings.layout}}"><div class="code_setting"><div class="column_1"><img src="{{section.settings.image | img_url:img_size}}"></div><div class="column_2">{{ section.settings.code }}</div></div></div>
+{%- render 'section_css' -%}
+{%- schema -%}
+  {
+    "name": "Titulo con imagen_icono",
+    "class": "nt_section type_custom_html",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "This is an advanced section. Knowledge of web design languages such as HTML, CSS is required."
+      },
+      {
+        "type": "header",
+        "content": "== General Settings"
+      },{
+        "type":"image_picker",
+		"id":"image",
+		"label":"Image_icono"
+      },
+      {
+        "type": "text",
+        "id": "tamano_image",
+        "label": "tamaño imagen",
+        "default": "30px",
+        "placeholder": "tamaño"
+      },
+      {
+        "type": "html",
+        "id": "code",
+        "label": "Content",
+        "default": "<div class=\"tc\">This is an advanced section. Knowledge of web design languages such as HTML, CSS is required.</div>"
+      },
+      {
+        "type": "text",
+        "id": "padding_texto",
+        "label": "padding textto",
+        "default": "0px"
+      },
+      {
+        "type": "range",
+        "id": "ft_size",
+        "min": 6,
+        "max": 50,
+        "step": 1,
+        "label": "Font size desktop",
+        "default": 16
+      },
+      {
+        "type": "range",
+        "id": "ft_size_mobile",
+        "min": 6,
+        "max": 50,
+        "step": 1,
+        "label": "Font size mobile",
+        "default": 16
+      },
+      {
+        "type": "color",
+        "id": "color_text",
+        "label": "Color del texto",
+        "default": "#000000"
+      },
+      {
+        "type": "header",
+        "content": "== Design Options"
+      },
+      {
+        "type": "select",
+        "id": "layout",
+        "options": [
+         {
+            "value": "container",
+            "label": "Container"
+         },
+         {
+            "value": "nt_full",
+            "label": "Full Width"
+          }
+        ],
+        "label": "Layout"
+      },
+      {
+        "type": "text",
+        "id": "mg",
+        "label": "Margin",
+        "info":"Margin top, margin right, margin bottom, margin left. If you not use to blank",
+        "default": "50px,,50px,",
+        "placeholder": "50px,,50px,"
+      },
+      {
+        "type": "text",
+        "id": "pd",
+        "label": "Padding",
+        "info":"Padding top, padding right, padding bottom, padding left. If you not use to blank",
+        "placeholder": "50px,,50px,"
+      },
+     {
+        "type": "header",
+        "content": "== Design Mobile Options"
+      },
+      {
+        "type": "text",
+        "id": "mg_mb",
+        "label": "Margin",
+        "placeholder": "50px,,50px,"
+      },
+      {
+        "type": "text",
+        "id": "pd_mb",
+        "label": "Padding",
+        "placeholder": "50px,,50px,"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Titulo con imagen_icono",
+        "category": "V. Text"
+      }
+    ]
+  }
+{% endschema %}
+<style>
+  .nt_se_{{section.id}} .code_setting {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    padding: {{ section.settings.padding_texto }};
+}
+  .nt_se_{{section.id}} .code_setting .column_2{
+    font-size: {{ section.settings.ft_size }}px;
+    padding: {{ section.settings.padding_texto }};
+    color: {{ section.settings.color_text }};
+}
+  .nt_se_{{section.id}} .code_setting img{
+    width: {{ section.settings.tamano_image }};
+}
+  @media (max-width: 600px) {
+    .nt_se_{{section.id}} .code_setting .column_2{
+    font-size: {{ section.settings.ft_size_mobile }}px;
+}
+  }
+  </style>
