@@ -1,0 +1,198 @@
+<div class="nt_se_{{section.id}} {{section.settings.layout}}" style="text-align: {{ section.settings.aline }};background: {{ section.settings.color-div }};"><a href="{{ section.settings.enlace }}" class="style-boton_{{section.id}}">{{ section.settings.code }}</a></div>
+{%- render 'section_css' -%}
+{%- schema -%}
+  {
+    "name": " botón Custom",
+    "class": "nt_section type_custom_html",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "This is an advanced section. Knowledge of web design languages such as HTML, CSS is required."
+      },
+      {
+        "type": "header",
+        "content": "== General Settings"
+      },
+	  {
+        "type": "color",
+        "id": "color-div",
+        "label": "Color Fondo Sección"
+      },
+	  {
+        "type": "color",
+        "id": "fondo",
+        "label": "Color Botón"
+      },
+	  {
+        "type": "color",
+        "id": "color-text",
+        "label": "Color Texto Botón"
+      },
+	  {
+        "type": "color",
+        "id": "hover_fondo",
+        "label": "Color Botón (hover)"
+      },
+	  {
+        "type": "color",
+        "id": "hover_text",
+        "label": "Color Texto Botón (hover)"
+      },
+      {
+        "type": "select",
+        "id": "aline",
+        "options": [
+         {
+            "value": "left",
+            "label": "Left"
+         },
+         {
+            "value": "center",
+            "label": "Center"
+          },
+         {
+            "value": "right",
+            "label": "Right"
+          }
+        ],
+        "label": "Layout"
+      },
+      {
+        "type": "text",
+        "id": "code",
+        "label": "Texto Botón",
+        "default": "Botón"
+      },
+      {
+        "type": "text",
+        "id": "radio",
+        "label": "Radius Botón",
+        "default": "0px"
+      },
+      {
+        "type": "url",
+        "id": "enlace",
+        "label": "Link categoria"
+      },
+      {
+        "type": "text",
+        "id": "padding-boton",
+        "label": "Padding botón",
+        "default": "0px 0px 0px 0px"
+      },
+      {
+        "type": "range",
+        "id": "letra-size",
+        "label": "Tamaño Letra Botón",
+        "default": 10,
+        "min": 5,
+        "max": 30,
+        "step": 1,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "width",
+        "label": "Width Botón Desktop",
+        "default": 10,
+        "min": 10,
+        "max": 100,
+        "step": 10,
+        "unit": "%"
+      },
+      {
+        "type": "header",
+        "content": "== Design Options"
+      },
+      {
+        "type": "select",
+        "id": "layout",
+        "options": [
+         {
+            "value": "container",
+            "label": "Container"
+         },
+         {
+            "value": "nt_full",
+            "label": "Full Width"
+          }
+        ],
+        "label": "Layout"
+      },
+      {
+        "type": "text",
+        "id": "mg",
+        "label": "Margin",
+        "info":"Margin top, margin right, margin bottom, margin left. If you not use to blank",
+        "default": "50px,,50px,",
+        "placeholder": "50px,,50px,"
+      },
+      {
+        "type": "text",
+        "id": "pd",
+        "label": "Padding",
+        "info":"Padding top, padding right, padding bottom, padding left. If you not use to blank",
+        "placeholder": "50px,,50px,"
+      },
+     {
+        "type": "header",
+        "content": "== Design Mobile Options"
+      },
+      {
+        "type": "range",
+        "id": "width-mobile",
+        "label": "Width Botón Mobile",
+        "default": 10,
+        "min": 10,
+        "max": 100,
+        "step": 10,
+        "unit": "%"
+      },
+      {
+        "type": "text",
+        "id": "mg_mb",
+        "label": "Margin",
+        "placeholder": "50px,,50px,"
+      },
+      {
+        "type": "text",
+        "id": "pd_mb",
+        "label": "Padding",
+        "placeholder": "50px,,50px,"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Botón Custom",
+        "category": "V. Text"
+      }
+    ]
+  }
+{% endschema %}
+
+<style>
+.style-boton_{{section.id}}{
+  background-color: {{ section.settings.fondo }};
+  border: none;
+  color: {{ section.settings.color-text }};
+  padding: {{ section.settings.padding-boton }};
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: {{ section.settings.letra-size }}px;
+  border-radius: {{ section.settings.radio }};
+  width: {{ section.settings.width }}%;
+ }
+.style-boton_{{section.id}}:hover{
+  background-color: {{ section.settings.hover_fondo }};
+  color: {{ section.settings.hover_text }};
+}
+  
+  
+@media (max-width: 767px) {
+  .style-boton_{{section.id}}{
+    width: {{ section.settings.width-mobile }}%;
+    padding: {{ section.settings.pd_mb }};
+  }
+}
+</style>
